@@ -1,15 +1,13 @@
-Dynamic Catalogue Server
+Telugu Premier League
 ========================
 
-A simple dynamic catalogue server implementing:
+Simple project to generate profiles based on categories 
 
- * A single catalogue at /cat
- * Read/insert/modify of items
- * Basic Auth for authentication (required for write operations)
- * Search of catalogue (urn:X-rbccps:search:simple)
+ * generate simple database of players registered for the tournament
+ * get image data, player strengths, stats and availability  
+ * Advance features ability to conduct auctions 
 
-The server is built for simplicity, not performance.
-See htdocs/index.html for more information.
+
 
 Prerequisites
 -------------
