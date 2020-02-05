@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "URIjs": "~1.10.2",
-    "ejs": "^3.0.1",
     "express": "~3.21.2",
     "googleapis": "^39.2.0",
     "gs": "0.0.2",
