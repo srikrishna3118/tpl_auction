@@ -1,0 +1,32 @@
+footer.footer.footer--bg
+    .container
+        .row
+            .col-md-4.footer__left
+                a.navbar-brand(href='#')
+                p
+                    | Copyright
+                    span &copy;
+                    |  Dart themes 2017
+            .col-md-4.footer__social-icons
+                li
+                    a(href='#')
+                        i.flaticon-facebook-letter-logo
+                li
+                    a(href='#')
+                        i.flaticon-twitter-logo-silhouette
+                li
+                    a(href='#')
+                        i.flaticon-google-plus
+                li
+                    a(href='#')
+                        i.flaticon-pinterest-logo
+|   //
+script(src='assets/jquery/jquery-3.2.1.min.js')
+script(src='assets/bootstrap/js/bootstrap.min.js')
+// <script src="assets/owl-slider/owl.carousel.min.js"></script>
+script.
+    $(document).ready(function() {
+        $('button').click( function(e) {
+            $('.collapse').collapse('hide');
+        });
+    });
