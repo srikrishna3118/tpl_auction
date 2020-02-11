@@ -20,7 +20,8 @@ THE SOFTWARE.
 */
 
 exports.port = 8001;
-exports.htdocs = "../htdocs";
+exports.static = "./static";
+exports.views = "./views";
 
 exports.mongo = {
     uri: "mongodb://localhost/catdemo"

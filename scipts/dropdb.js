@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 // dependencies
 var mongo = require('mongodb').MongoClient;
-var config = require('./lib/config');
+var config = require('../app/config');
 
 // connect to mongo
     mongo.connect(config.mongo.uri, function(err, db) {
