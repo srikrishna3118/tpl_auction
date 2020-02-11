@@ -25,7 +25,7 @@ var _ = require('underscore');
 
 var fs = require('fs'),
     readline =require('readline'),
-    {google} = require('googleapis')
+    {google} = require('googleapis');
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
@@ -91,7 +91,7 @@ exports.get = function(req, res) {
     fs.readFile('credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err);
         // Authorize a client with credentials, then call the Google Sheets API.
-        console.log("authorization function")
+        console.log("authorization function");
         data_1 = authorize(JSON.parse(content), datapull);
     });
 

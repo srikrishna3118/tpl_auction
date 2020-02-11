@@ -20,14 +20,14 @@ THE SOFTWARE.
 */
 
 var express = require('express'),
-    config = require('./config'),
+    config = require('./app/config'),
     path = require('path'),
     http = require('http'),
     fs = require('fs'),
     https = require('https'),
-    mongo = require('./mongo'),
-    cat = require('./cat'),
-    auth = require('./auth');
+    mongo = require('./app/mongo'),
+    cat = require('./app/cat'),
+    auth = require('./app/auth');
 
 
 
@@ -37,21 +37,21 @@ var app = express();
 app.set('port', config.port);
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
-app.use(express.static(path.join(__dirname, config.htdocs), {index:'index.html'}));
-app.use(express.directory(path.join(__dirname, config.htdocs)));
+app.use(express.static(path.join(__dirname, config.static), {index:'index.html'}));
+// app.use(express.directory(path.join(__dirname, config.views)));
 
 //});
-
-// Routes
-app.get('/cat', cat.get);
 
 //advanced rendering of catalog
 //app.get('/hypercat', cat.hypercat);
 
 //
 //Ab: Added Jade/Pug framework
-app.set('views','./htdocs');
+app.set('views',config.views);
 app.set('view engine','pug');
+
+// Routes
+app.get('/cat', cat.get);
 
 app.delete('/cat', cat.delete);
 

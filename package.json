@@ -2,10 +2,10 @@
   "name": "cat-dynserver",
   "version": "0.0.1",
   "description": "Web server for dynamic catalogues",
-  "main": "api.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon lib/api.js",
-    "test": "node_modules/jshint/bin/jshint lib/*.js"
+    "start": "nodemon app.js",
+    "test": "node_modules/jshint/bin/jshint app/*.js"
   },
   "author": "Toby Jaffey <toby@1248.io>",
   "devDependencies": {
