@@ -7,7 +7,9 @@ exports.static = "./static";
 exports.views = "./views";
 
 exports.mongo = {
-    uri: "mongodb://localhost/catdemo"
+    uri: "mongodb://localhost/catdemo",
+    dbname:"catdemo",
+    collectionname:"players"
 };
 
 exports.auth = {

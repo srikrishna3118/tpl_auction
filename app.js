@@ -20,7 +20,7 @@
  */
 
 var express = require('express'),
-    config = require('./app/config'),
+    config = require('./config'),
     path = require('path'),
     http = require('http'),
     morgan = require('morgan'),
@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, config.static), {index: 'index.html'
 app.set('views', config.views);
 app.set('view engine', 'pug');
 
-app.use('/', require('./app/routes'));
+app.use('/', require('./app/controller'));
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));

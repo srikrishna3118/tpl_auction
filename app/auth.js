@@ -2,7 +2,7 @@
  * Express Auth Module
 */
 
-var config = require('./config');
+var config = require('../config');
 var express = require('express');
 
 // simple username + password check

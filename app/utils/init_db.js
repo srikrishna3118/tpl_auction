@@ -1,30 +1,30 @@
 /** Copyright (c) 2013 Toby Jaffey <toby@1248.io>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-*/
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
 
 // var config = require('./config');
-var db = require('./mongo');
+var players = require('../models/player');
 var _ = require('underscore');
 
 var fs = require('fs'),
-    readline =require('readline'),
+    readline = require('readline'),
     {google} = require('googleapis');
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -34,6 +34,7 @@ function sanitize(doc) {
     delete doc._id;
     return doc;
 }
+
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
  * given callback function.
@@ -47,11 +48,11 @@ function authorize(credentials, callback) {
         client_id, client_secret, redirect_uris[0]);
 
     // Check if we have previously stored a token.
-     fs.readFile(TOKEN_PATH, (err, token) => {
-         if (err) return getNewToken(oAuth2Client, callback);
-         oAuth2Client.setCredentials(JSON.parse(token));
-         callback(oAuth2Client);
-     });
+    fs.readFile(TOKEN_PATH, (err, token) => {
+        if (err) return getNewToken(oAuth2Client, callback);
+        oAuth2Client.setCredentials(JSON.parse(token));
+        callback(oAuth2Client);
+    });
 }
 
 /**
@@ -85,7 +86,7 @@ function getNewToken(oAuth2Client, callback) {
     });
 }
 
-exports.get = function(req, res) {
+exports.get = function (req, res) {
     // Authorization
     var data_1;
     fs.readFile('credentials.json', (err, content) => {
@@ -105,16 +106,26 @@ exports.get = function(req, res) {
             // (2) Changed the range of data being pulled
             range: 'sheet1!B2:M1000',
         }, (err, response) => {
+            // (3) Checked for error messages
             if (err) return console.log('The API returned an error: ' + err);
+            // (4) Clear out the database
+            players.clear((err, result) => {
+                let rows = response.data.values;
+                let data = [];
+                rows.forEach (row => {
+                    let record = {
+                        "name":row[0],
+                        "department":row[1],
+                        "designation":row[2]
+                    };
+                    data.push(record);
+                });
+                players.insert(data, (err, result) => {
+                    if (err) throw err;
+                    res.json({"status": "OK"});
+                });
+            });
 
-            // (3) Setting data for daily tracking
-            var rows = response.data.values;
-            // console.log("rows data is ",rows[5][0]);
-            // (4) Rendering the page and passing the rows data in
-            //return rows;
-            //res.send(200, rows);
-            //res.render('test', {rows: rows});
-            res.json({"status":"OK"});
         });
     }
 };
