@@ -19,7 +19,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-var config = require('./config');
+// var config = require('./config');
 var db = require('./mongo');
 var _ = require('underscore');
 
@@ -99,34 +99,22 @@ exports.get = function(req, res) {
         const sheets = google.sheets({version: 'v4', auth});
 
         // Pulling the data from the specified spreadsheet and the specified range
-        var result = sheets.spreadsheets.values.get({
+        sheets.spreadsheets.values.get({
             // (1) Changed spreadsheet ID
             spreadsheetId: '1BjYukL8TS4xtO4fw4J_R4O6HORRp-cEfJdjVDdT94kY',
             // (2) Changed the range of data being pulled
-            range: 'sheet1!B2:M2',
+            range: 'sheet1!B2:M1000',
         }, (err, response) => {
             if (err) return console.log('The API returned an error: ' + err);
 
             // (3) Setting data for daily tracking
             var rows = response.data.values;
-            console.log("rows data is ",rows[0][6]);
+            // console.log("rows data is ",rows[5][0]);
             // (4) Rendering the page and passing the rows data in
             //return rows;
             //res.send(200, rows);
             //res.render('test', {rows: rows});
-            res.render('auction', { name: rows[0][0],dept: rows[0][1], image: rows[0][6], spl: rows[0][7], batting: rows[0][8], bowling: rows[0][9],keeping: rows[0][10],fielding:rows[0][11]});
+            res.json({"status":"OK"});
         });
     }
-};
-
-
-exports.delete = function(req, res) {
-    items = db.get().collection('items');
-    var filter = {href:req.query.href};
-    items.remove(filter, function(err, doc) {
-        if (err)
-            res.send(500);  // not found
-        else
-            res.send(200);
-    });
 };

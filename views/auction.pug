@@ -2,16 +2,17 @@ extends layout
 
 block content
     section.page-section
-        .container
-            .span4
-                img.img-left(src= "/static/assets/images/players/srk.jpg")
-                .content-heading
-                    h3 !{name} from !{dept} @Specialization - !{spl}
-                    p
-                        | Batting - !{batting}
-                    p
-                        | Bowling - !{bowling}
-                    p
-                        | Wicket keeping - !{keeping}
-                    p
-                        | Fielding - !{fielding}
+        each player in data
+            .container
+                .span4
+                    img.img-left(src= "!{player[6]}")
+                    .content-heading
+                        h3 !{player[0]} from !{player[1]} @Specialization - !{player[7]}
+                        p
+                            | Batting - !{player[8]}
+                        p
+                            | Bowling - !{player[9]}
+                        p
+                            | Wicket keeping - !{player[10]}
+                        p
+                            | Fielding - !{player[11]}
