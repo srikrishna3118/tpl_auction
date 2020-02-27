@@ -1,15 +1,15 @@
-FROM node:10 #pull a node image from docker hub
+FROM node:10
 
-WORKDIR /auction #set the working dir to /auction
+WORKDIR /auction
 
-COPY package.json package.json #copy package.json to the container
+COPY package.json package.json
 
-RUN npm install # install package.json modules in container
+RUN npm install
 
-COPY . . #copy everything to container /auction
+COPY . .
 
-EXPOSE 8001 #expose port 8001 to mount it to another port in local machine
+EXPOSE 8001
 
-RUN npm install -g nodemon # install nodemon for changes on the fly
+RUN npm install -g nodemon
 
-CMD [ "nodemon", "app.js" ] # start server inside container
+CMD [ "nodemon", "app.js" ]
