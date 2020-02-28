@@ -102,9 +102,10 @@ exports.get = function (req, res) {
         // Pulling the data from the specified spreadsheet and the specified range
         sheets.spreadsheets.values.get({
             // (1) Changed spreadsheet ID
-            spreadsheetId: '1BjYukL8TS4xtO4fw4J_R4O6HORRp-cEfJdjVDdT94kY',
+            //spreadsheetId: '1BjYukL8TS4xtO4fw4J_R4O6HORRp-cEfJdjVDdT94kY',
+            spreadsheetId: '1TpUQKKkV3krBqikZBlfVANsIX2V__fhwRtM2d8GeASA',
             // (2) Changed the range of data being pulled
-            range: 'sheet1!B2:M1000',
+            range: 'sheet1!B2:O1000',
         }, (err, response) => {
             // (3) Checked for error messages
             if (err) return console.log('The API returned an error: ' + err);
@@ -114,9 +115,14 @@ exports.get = function (req, res) {
                 let data = [];
                 rows.forEach (row => {
                     let record = {
-                        "name":row[0],
-                        "department":row[1],
-                        "designation":row[2]
+                        "image":row[0],
+                        "name":row[1],
+                        "dept":row[2],
+                        "batting":row[7],
+                        "bowling":row[8],
+                        "keeping":row[9],
+                        "fielding":row[10],
+                        "tagline":row[13]
                     };
                     data.push(record);
                 });
