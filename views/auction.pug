@@ -1,18 +1,122 @@
 extends layout2
 
 block content
-    section.page-section
-        each player in data
-            .container
-                .span4
-                    img.img-left(src= "!{player[6]}")
-                    .content-heading
-                        h3 !{player[0]} from !{player[1]} @Specialization - !{player[7]}
-                        p
-                            | Batting - !{player[8]}
-                        p
-                            | Bowling - !{player[9]}
-                        p
-                            | Wicket keeping - !{player[10]}
-                        p
-                            | Fielding - !{player[11]}
+    section.auction
+        //each player in data
+        .container
+            .span4
+                h1 !{name} @Specialization - !{spl}
+                img.img-left(src=img)
+                .content-heading
+                    table(style='width:50%')
+                        tr
+                            td
+                                h3
+                                    label(for='batting') Batting:
+                            td
+                                h3
+                                    progress#batting(value=bat min='0' max='100')
+                        tr
+                            td
+                                h3
+                                    label(for='bowling') Bowling:
+                            td
+                                h3
+                                    progress#bowling(value=bowl min='0' max='100')
+                        tr
+                            td
+                                h3
+                                    label(for='fielding') Fielding:
+                            td
+                                h3
+                                    progress#fielding(value=field min='0' max='100')
+                        tr
+                            td
+                                h3
+                                    label(for='wk') Wicketkeeping :
+                            td
+                                h3
+                                    progress#wk(value=wk min='0' max='100')
+                        //h3     Bowling - !{bowl}
+                        //h3    Wicket keeping - !{wk}
+                        //h3     Fielding - !{field}\
+                h3 !{tag}
+                p#time_left.maa
+                ul.saa
+                    li#playpause.paa &#x25B6;
+                    li#reset.paa &olarr;
+                    //li#glyphicon &#x231b;
+                    li#sold
+                        form(action='/sold' method='post')
+                                table(style='width:70%')
+                                    tr
+                                        td
+                                            label.form(for='team') Team Name:
+                                        td
+                                            input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
+                                    tr
+                                        td
+                                            label.form(for='price') bid price:
+                                        td
+                                            input#price.form-control(type='text' name='price' size='50' placeholder='Amount' required='')
+                                    tr
+                                        td
+                                            input#player(type='hidden' name='playername' value=name)
+                                        td
+                                            button.btn.btn-primary(type='submit') SOLD
+
+
+    script.
+        var COUNT_START = 10 * 2 * 60; // tenths * seconds * hours
+        var count = COUNT_START;
+        var playing = false;
+        playpause = document.getElementById('playpause');
+        reset = document.getElementById('reset');
+        playpause.onclick = function () {
+            if (playing) {
+                playing = false;
+                console.log("Pause!");
+                playpause.innerHTML = "▶";
+            } else if (!playing) {
+                playing = true;
+                console.log("Play!");
+                playpause.innerHTML = "‖";
+            }
+        }
+        reset.onclick = function () {
+            if (playing) {
+                playing = false;
+                playpause.innerHTML = "▶";
+            }
+            console.log("Reset Timer!");
+            count = COUNT_START;
+        }
+        function countdown() {
+            displayTime();
+            if (count == 0) {
+                playing = false;
+            } else if (playing) {
+                setTimeout(countdown, 100);
+                count--;
+            } else {
+                setTimeout(countdown, 100);
+            }
+        }
+        countdown();
+        function displayTime() {
+            var tenths = count;
+            var sec = Math.floor(tenths / 10);
+            var hours = Math.floor(sec / 3600);
+            sec -= hours * (3600);
+            var mins = Math.floor(sec / 60);
+            sec -= mins * (60);
+            if (hours < 1) {
+                document.getElementById('time_left').innerHTML = LeadingZero(mins) + ':' + LeadingZero(sec);
+            } else {
+                document.getElementById('time_left').innerHTML = hours + ':' + LeadingZero(mins) + ':' + LeadingZero(sec);
+            }
+        }
+        function LeadingZero(Time) {
+            return (Time < 10) ? "0" + Time : +Time;
+        }
+

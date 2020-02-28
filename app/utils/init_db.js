@@ -123,7 +123,8 @@ exports.get = function (req, res) {
                         "keeping":row[9],
                         "fielding":row[10],
                         "specialization":row[12],
-                        "tagline":row[13]
+                        "tagline":row[13],
+                        "sold":"unsold"
                     };
                     data.push(record);
                 });

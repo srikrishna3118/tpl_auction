@@ -5,18 +5,18 @@ block content
         //- var text = JSON.stringify(data,null,2,100).replace(/\n/g, '<br>')
         .row
             .column(style='background-color:#add;')
-                h2 Batsman
+                h2 Team1
                 each player in batsman
                     p !{player}
             .column(style='background-color:#ddd;')
-                h2 Bowler
+                h2 Team2
                 each player1 in bowler
                     p !{player1}
             .column(style='background-color:#add;')
-                h2 Allrounder
+                h2 Team3
                 each player2 in allrounder
                     p !{player2}
             .column(style='background-color:#ddd;')
-                h2 WicketKeeper
+                h2 Team4
                 each player3 in wk
                     p !{player3}

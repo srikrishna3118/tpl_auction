@@ -1,38 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Search Catalog</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TSS Premier League</title>
+    <meta name="keywords" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.">
+    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.">
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
-        <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/hypercat">Registered people</a>
+<div id="content-wrapper">
+    <header class="header header--bg">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="/registered">REGISTERED</a></li>
+                        <li><a href="/team">TEAMS</a></li>
+                        <li><a href="search.html">AUCTION</a></li>
+                        <li><a href="tel:97979">CONTACT</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="auction">
+        <div class="container">
+            <div class="page-section">
+                <form action="/auction" method="get" class="form-signin">
+                    <h1 class="form-signin-heading">Select a category</h1>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio">
+                            <h3>
+                            <input type="radio" class="custom-control-input" id="batsman" name="bat">
+                            <label class="custom-control-label" for="batsman">Batsman</label><br><br>
+                            <input type="radio" class="custom-control-input" id="bowler" name="bowl">
+                            <label class="custom-control-label" for="bowler">Bowler</label><br><br>
+                            <input type="radio" class="custom-control-input" id="all" name="all">
+                            <label class="custom-control-label" for="all">Allrounder</label><br><br>
+                            <input type="radio" class="custom-control-input" id="wk" name="wk">
+                            <label class="custom-control-label" for="wk">Wicketkeeper</label><br><br>
+                            </h3>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> </span>  Submit</button>
+                    </div>
+                </form>
             </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Catagories</a></li>
-                    <li><a href="search.html">Tentative</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
         </div>
-    </nav>
-        <div style="width: 50%" >
+    </section>
 
+
+    <footer class="footer footer--bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer__left">
+                    <a class="navbar-brand" href="#"></a>
+                    <p>Copyright <span>&copy;</span> Dart themes 2017</p>
+                </div>
+
+                <div class="col-md-4 footer__social-icons">
+                    <li><a href="#"><i class="flaticon-facebook-letter-logo"></i></a></li>
+                    <li><a href="#"><i class="flaticon-twitter-logo-silhouette"></i></a></li>
+                    <li><a href="#"><i class="flaticon-google-plus"></i></a></li>
+                    <li><a href="#"><i class="flaticon-pinterest-logo"></i></a></li>
+                </div>
+            </div>
         </div>
-    </div>
+    </footer>
+
+</div>
 
 
+//<script src="assets/jquery/jquery-3.2.1.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- <script src="assets/owl-slider/owl.carousel.min.js"></script> -->
 
+<script>
+    $(document).ready(function() {
 
+        $('button').click( function(e) {
+            $('.collapse').collapse('hide');
+        });
+
+    });
+</script>
 </body>
 </html>
+

@@ -1,0 +1,22 @@
+extends layout2
+
+block content
+    section.page-section
+        //- var text = JSON.stringify(data,null,2,100).replace(/\n/g, '<br>')
+        .row
+            .column(style='background-color:#add;')
+                h2 Batsman
+                each player in t1
+                    p !{player}
+            .column(style='background-color:#ddd;')
+                h2 Bowler
+                each player1 in t2
+                    p !{player1}
+            .column(style='background-color:#add;')
+                h2 Allrounder
+                each player2 in t3
+                    p !{player2}
+            .column(style='background-color:#ddd;')
+                h2 WicketKeeper
+                each player3 in t4
+                    p !{player3}

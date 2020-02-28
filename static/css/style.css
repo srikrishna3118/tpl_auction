@@ -379,7 +379,14 @@ p{
     -webkit-box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.21);
             box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.21);
   }
-
+.auction{
+    background: url("../assets/images/auction.JPG") center repeat;
+    color: #ffffff;
+    background-color: black;
+}
+.auction.textarea {
+    color: black;
+}
 .video--bg{
     background-color: #187DED;
   }
