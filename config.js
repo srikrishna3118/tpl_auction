@@ -7,8 +7,8 @@ exports.static = "./static";
 exports.views = "./views";
 
 exports.mongo = {
-    //uri: "mongodb://localhost/catdemo", //uncomment for normal installation`
-    uri: "mongodb://mongo:27017/catdemo",
+    uri: "mongodb://localhost/catdemo", //uncomment for normal installation`
+    //uri: "mongodb://mongo:27017/catdemo",
     dbname:"catdemo",
     collectionname:"players"
 };
