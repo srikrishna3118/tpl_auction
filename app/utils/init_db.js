@@ -122,6 +122,7 @@ exports.get = function (req, res) {
                         "bowling":row[8],
                         "keeping":row[9],
                         "fielding":row[10],
+                        "specialization":row[12],
                         "tagline":row[13]
                     };
                     data.push(record);

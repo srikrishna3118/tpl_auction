@@ -19,10 +19,10 @@ client.connect(err => {
 });
 
 function get(options, cb) {
-    players.find(options).toArray(function (err, result) {
-        cb(err, result);
-    });
-}
+     players.find(options).toArray(function (err, result) {
+         cb(err, result);
+     });
+}//
 
 function insert(doc, cb) {
     players.insert(doc, function (err, result) {
