@@ -11,7 +11,7 @@ client.connect(err => {
 });
 
 function getStats(rating){
-    var value=0;
+    var value;
     var r = rating.toLowerCase().split(" ").join("");
     //console.log("rating ",r);
     switch(r) {
@@ -34,8 +34,8 @@ function getStats(rating){
 }
 
 exports.get = function(req, res) {
-    const query = {};//{ projection:{_id: 0, name: 1}};//,{ projection: { _id: 0, name: 1 } }}";
-    let data = [];
+    //const query = {};//{ projection:{_id: 0, name: 1}};//,{ projection: { _id: 0, name: 1 } }}";
+    //let data = [];
 
     res.render('auction', {data: {}});
     //TODO: Insert data here @srikrishna via DB.
@@ -54,13 +54,13 @@ exports.registered = function(req,res){
             let wk =[];
             result.forEach(row=>{
                 //console.log(row.name);
-                if (row.specialization == "Bowler")
+                if (row.specialization === "Bowler")
                     bowler.push(row.name.toLowerCase());
-                if(row.specialization == "Batsman")
+                if(row.specialization === "Batsman")
                     batsman.push(row.name.toLowerCase());
-                if (row.specialization == "Allrounder")
+                if (row.specialization === "Allrounder")
                     allrounder.push(row.name.toLowerCase());
-                if(row.specialization == "WicketKeeper")
+                if(row.specialization === "WicketKeeper")
                     wk.push(row.name.toLowerCase());
             });
 
@@ -74,22 +74,22 @@ exports.registered = function(req,res){
 function makefilter(req){
     //console.log(req.query);
     var filter= {};
-    if(req.query.bat=="on"){
+    if(req.query.bat==="on"){
         //console.log("selected batsman");
         filter = {specialization:"Batsman", sold: "unsold"};
     }
     else
-        if(req.query.bowl=="on"){
+        if(req.query.bowl==="on"){
             //console.log("selected bowler");
             filter = {specialization:"Bowler", sold: "unsold"};
         }
         else
-            if(req.query.all=="on"){
+            if(req.query.all==="on"){
                 //console.log("selected all rounder");
                 filter = {specialization:"Allrounder", sold: "unsold"};
             }
             else
-                if(req.query.wk=="on"){
+                if(req.query.wk==="on"){
                     //console.log("selected wicketkeeper");
                     filter = {specialization:"WicketKeeper", sold: "unsold"};
                 }
@@ -166,16 +166,16 @@ function makeplayer(row){
     console.log(player);
     console.log(row.price);
     if(row.specialization === "Bowler"){
-        player = player.concat("(O)","-",row.price);
+        player = player.concat("(o)","-",row.price,"cr");
     }
     if(row.specialization === "Batsman"){
-        player = player.concat("(b)","-",row.price);
+        player = player.concat("(b)","-",row.price,"cr");
     }
     if(row.specialization === "Allrounder"){
-        player = player.concat("(A)","-",row.price);
+        player = player.concat("(a)","-",row.price,"cr");
     }
     if(row.specialization === "WicketKeeper"){
-        player = player.concat("(W)","-",row.price);
+        player = player.concat("(w)","-",row.price,"cr");
     }
     return player;
 }
@@ -200,19 +200,19 @@ exports.team = function(req,res){
                 //console.log(row.name);
                 player = makeplayer(row);
                 //console.log(player);
-                if (row.sold === "heman") {
+                if (row.sold.toLowerCase() === "heman") {
                     tp1 = tp1 - row.price;
                     team1.push(player);
                 }
-                if(row.sold === "batman"){
+                if(row.sold.toLowerCase() === "batman"){
                     tp2=tp2-row.price;
                     team2.push(player);
                 }
-                if (row.sold === "superman"){
+                if (row.sold.toLowerCase() === "superman"){
                     tp3=tp3-row.price;
                     team3.push(player);
                 }
-                if(row.sold === "ironman") {
+                if(row.sold.toLowerCase() === "ironman") {
                     tp4 = tp4 - row.price;
                     team4.push(player);
                 }

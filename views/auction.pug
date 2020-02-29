@@ -18,28 +18,28 @@ block content
                                                 label(for='batting') Batting:
                                         td
                                             h3
-                                                progress#batting(value=bat min='0' max='100')
+                                                progress#batting(value=bat max='100')
                                     tr
                                         td
                                             h3
                                                 label(for='bowling') Bowling:
                                         td
                                             h3
-                                                progress#bowling(value=bowl min='0' max='100')
+                                                progress#bowling(value=bowl max='100')
                                     tr
                                         td
                                             h3
                                                 label(for='fielding') Fielding:
                                         td
                                             h3
-                                                progress#fielding(value=field min='0' max='100')
+                                                progress#fielding(value=field max='100')
                                     tr
                                         td
                                             h3
                                                 label(for='wk') Wicketkeeping :
                                         td
                                             h3
-                                                progress#wk(value=wk min='0' max='100')
+                                                progress#wk(value=wk max='100')
                                 //h3     Bowling - !{bowl}
                                 //h3    Wicket keeping - !{wk}
                                 //h3     Fielding - !{field}\
@@ -60,7 +60,7 @@ block content
                             td
                                 label.form(for='price') bid price:
                             td
-                                input#price.form-control(type='text' name='price' size='50' placeholder='Amount' required='')
+                                input#price.form-control(type='number' name='price' size='50' placeholder='Amount' required='')
                         tr
                             td
                                 input#player(type='hidden' name='playername' value=name)
@@ -95,7 +95,7 @@ block content
         }
         function countdown() {
             displayTime();
-            if (count == 0) {
+            if (count === 0) {
                 playing = false;
             } else if (playing) {
                 setTimeout(countdown, 100);
