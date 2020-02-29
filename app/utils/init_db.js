@@ -124,7 +124,8 @@ exports.get = function (req, res) {
                         "fielding":row[10],
                         "specialization":row[12],
                         "tagline":row[13],
-                        "sold":"unsold"
+                        "sold":"unsold",
+                        "price":"0"
                     };
                     data.push(record);
                 });

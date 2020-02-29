@@ -12,7 +12,9 @@ client.connect(err => {
 
 function getStats(rating){
     var value=0;
-    switch(rating) {
+    var r = rating.toLowerCase().split(" ").join("");
+    //console.log("rating ",r);
+    switch(r) {
         case "beginners":
             // code block
             value = 20;
@@ -25,7 +27,7 @@ function getStats(rating){
             value = 50;
             break;
         default:
-            value = 10;
+            value = 0;
         // code block
     }
     return value;
@@ -70,7 +72,7 @@ exports.registered = function(req,res){
 };
 
 function makefilter(req){
-    console.log(req.query);
+    //console.log(req.query);
     var filter= {};
     if(req.query.bat=="on"){
         //console.log("selected batsman");
@@ -93,25 +95,34 @@ function makefilter(req){
                 }
     return filter
 }
-
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
 
 exports.auction = function(req,res){
     //players.findOne({},function(err,result){
     var filter = makefilter(req);
-    console.log(filter);
+    //console.log(filter);
     players.find(filter).toArray(function(err,result){
         if (err)
             res.send(500);
         else {
-            console.log(result);
-            result = result.pop();
+            //console.log("result length",result.length);
+            var i = getRandomInt(result.length);
+            console.log(result[i]);
+            if(result.length === 1){
+                result = result.pop();
+            } else{
+                result = result[i];
+            }
             if (result) {
                 //console.log(result);
                 var img = result.image.split("=");
 
                 var out_img = "https://drive.google.com/thumbnail?id=";
-                out_img = out_img.concat(img[1]);
-                //console.log(out_img);
+                //var out_img ="https://drive.google.com/file/d/"
+                out_img = out_img.concat(img[1],"&sz=w320");
+                console.log(out_img);
 
                 res.render('auction', {
                     name: result.name,
@@ -136,10 +147,13 @@ exports.sold =function(req,res){
     players.findOne(filter,function(err,result){
         var newValue = result;
         newValue.sold=req.body.team;
+        newValue.price=req.body.price;
+
+        console.log(newValue);
 
         players.update(filter, newValue, function(err, res) {
             if (err) throw err;
-            console.log("1 document updated");
+            console.log("one document updated");
             //db.close();
         });
     });
@@ -147,31 +161,64 @@ exports.sold =function(req,res){
     res.render('success',{player:req.body.playername, team: req.body.team, amt: req.body.price });
 
 };
+function makeplayer(row){
+    var player =row.name.toLowerCase();
+    console.log(player);
+    console.log(row.price);
+    if(row.specialization === "Bowler"){
+        player = player.concat("(O)","-",row.price);
+    }
+    if(row.specialization === "Batsman"){
+        player = player.concat("(b)","-",row.price);
+    }
+    if(row.specialization === "Allrounder"){
+        player = player.concat("(A)","-",row.price);
+    }
+    if(row.specialization === "WicketKeeper"){
+        player = player.concat("(W)","-",row.price);
+    }
+    return player;
+}
 
 //To display all the registered candidates
 exports.team = function(req,res){
-    players.find({},{ projection: {_id: 0, name: 1,sold: 1}}).toArray(function(err, result) {
+    players.find({},{ projection: {_id: 0, name: 1,sold: 1,specialization:1, price:1}}).toArray(function(err, result) {
         if (err)
             res.send(500);
         else{
+            var player;
             //console.log(result);
             let team1 =[];
             let team2 =[];
             let team3 =[];
             let team4 =[];
+            let tp1=150;
+            let tp2=150;
+            let tp3=150;
+            let tp4=150;
             result.forEach(row=>{
                 //console.log(row.name);
-                if (row.sold == "heman")
-                    team1.push(row.name.toLowerCase());
-                if(row.sold == "batman")
-                    team2.push(row.name.toLowerCase());
-                if (row.sold == "superman")
-                    team3.push(row.name.toLowerCase());
-                if(row.sold == "ironman")
-                    team4.push(row.name.toLowerCase());
+                player = makeplayer(row);
+                //console.log(player);
+                if (row.sold === "heman") {
+                    tp1 = tp1 - row.price;
+                    team1.push(player);
+                }
+                if(row.sold === "batman"){
+                    tp2=tp2-row.price;
+                    team2.push(player);
+                }
+                if (row.sold === "superman"){
+                    tp3=tp3-row.price;
+                    team3.push(player);
+                }
+                if(row.sold === "ironman") {
+                    tp4 = tp4 - row.price;
+                    team4.push(player);
+                }
             });
 
-            res.render('teams', {t1: team1, t2: team2, t3: team3, t4: team4});
+            res.render('teams', {t1: team1, t2: team2, t3: team3, t4: team4, p1: tp1, p2:tp2, p3:tp3,p4:tp4});
         }
         //console.log(result);
 
