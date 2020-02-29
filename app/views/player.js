@@ -109,7 +109,7 @@ exports.auction = function(req,res){
         else {
             //console.log("result length",result.length);
             var i = getRandomInt(result.length);
-            console.log(result[i]);
+            //console.log(result[i]);
             if(result.length === 1){
                 result = result.pop();
             } else{
@@ -122,7 +122,7 @@ exports.auction = function(req,res){
                 var out_img = "https://drive.google.com/thumbnail?id=";
                 //var out_img ="https://drive.google.com/file/d/"
                 out_img = out_img.concat(img[1],"&sz=w320");
-                console.log(out_img);
+                //console.log(out_img);
 
                 res.render('auction', {
                     name: result.name,
@@ -149,7 +149,7 @@ exports.sold =function(req,res){
         newValue.sold=req.body.team;
         newValue.price=req.body.price;
 
-        console.log(newValue);
+        //console.log(newValue);
 
         players.update(filter, newValue, function(err, res) {
             if (err) throw err;
@@ -163,8 +163,8 @@ exports.sold =function(req,res){
 };
 function makeplayer(row){
     var player =row.name.toLowerCase();
-    console.log(player);
-    console.log(row.price);
+    //console.log(player);
+    //console.log(row.price);
     if(row.specialization === "Bowler"){
         player = player.concat("(o)","-",row.price,"cr");
     }
