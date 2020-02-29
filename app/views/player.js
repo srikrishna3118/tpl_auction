@@ -163,15 +163,15 @@ exports.team = function(req,res){
                 //console.log(row.name);
                 if (row.sold == "heman")
                     team1.push(row.name.toLowerCase());
-                if(row.specialization == "batman")
+                if(row.sold == "batman")
                     team2.push(row.name.toLowerCase());
-                if (row.specialization == "superman")
+                if (row.sold == "superman")
                     team3.push(row.name.toLowerCase());
-                if(row.specialization == "ironman")
+                if(row.sold == "ironman")
                     team4.push(row.name.toLowerCase());
             });
 
-            res.render('registered', {t1: team1, t2: team2, t3: team3, t4: team4});
+            res.render('teams', {t1: team1, t2: team2, t3: team3, t4: team4});
         }
         //console.log(result);
 

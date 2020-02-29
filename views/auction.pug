@@ -8,63 +8,65 @@ block content
                 h1 !{name} @Specialization - !{spl}
                 img.img-left(src=img)
                 .content-heading
-                    table(style='width:50%')
+                    table()
                         tr
                             td
-                                h3
-                                    label(for='batting') Batting:
-                            td
-                                h3
-                                    progress#batting(value=bat min='0' max='100')
-                        tr
-                            td
-                                h3
-                                    label(for='bowling') Bowling:
-                            td
-                                h3
-                                    progress#bowling(value=bowl min='0' max='100')
-                        tr
-                            td
-                                h3
-                                    label(for='fielding') Fielding:
-                            td
-                                h3
-                                    progress#fielding(value=field min='0' max='100')
-                        tr
-                            td
-                                h3
-                                    label(for='wk') Wicketkeeping :
-                            td
-                                h3
-                                    progress#wk(value=wk min='0' max='100')
-                        //h3     Bowling - !{bowl}
-                        //h3    Wicket keeping - !{wk}
-                        //h3     Fielding - !{field}\
-                h3 !{tag}
-                p#time_left.maa
-                ul.saa
-                    li#playpause.paa &#x25B6;
-                    li#reset.paa &olarr;
-                    //li#glyphicon &#x231b;
-                    li#sold
-                        form(action='/sold' method='post')
-                                table(style='width:70%')
+                                table(style='width:100%')
                                     tr
                                         td
-                                            label.form(for='team') Team Name:
+                                            h3
+                                                label(for='batting') Batting:
                                         td
-                                            input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
+                                            h3
+                                                progress#batting(value=bat min='0' max='100')
                                     tr
                                         td
-                                            label.form(for='price') bid price:
+                                            h3
+                                                label(for='bowling') Bowling:
                                         td
-                                            input#price.form-control(type='text' name='price' size='50' placeholder='Amount' required='')
+                                            h3
+                                                progress#bowling(value=bowl min='0' max='100')
                                     tr
                                         td
-                                            input#player(type='hidden' name='playername' value=name)
+                                            h3
+                                                label(for='fielding') Fielding:
                                         td
-                                            button.btn.btn-primary(type='submit') SOLD
-
+                                            h3
+                                                progress#fielding(value=field min='0' max='100')
+                                    tr
+                                        td
+                                            h3
+                                                label(for='wk') Wicketkeeping :
+                                        td
+                                            h3
+                                                progress#wk(value=wk min='0' max='100')
+                                //h3     Bowling - !{bowl}
+                                //h3    Wicket keeping - !{wk}
+                                //h3     Fielding - !{field}\
+                            td
+                                p#time_left.maa
+                                    ul.saa
+                                        li#playpause.paa &#x25B6;
+                                        li#reset.paa &olarr;
+                h2 !{tag}
+                form(action='/sold' method='post')
+                    table(style='width:70%')
+                        tr
+                            td
+                                label.form(for='team') Team Name:
+                            td
+                                input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
+                        tr
+                            td
+                                label.form(for='price') bid price:
+                            td
+                                input#price.form-control(type='text' name='price' size='50' placeholder='Amount' required='')
+                        tr
+                            td
+                                input#player(type='hidden' name='playername' value=name)
+                            td
+                                h3
+                                    button.btn.btn-primary(type='submit') SOLD
 
     script.
         var COUNT_START = 10 * 2 * 60; // tenths * seconds * hours
