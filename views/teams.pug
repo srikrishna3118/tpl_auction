@@ -3,25 +3,32 @@ extends layout2
 block content
     section.page-section
         //- var text = JSON.stringify(data,null,2,100).replace(/\n/g, '<br>')
-        .row
+        //.row
             .column2(style='background-color:#add;')
-                h3 Heman (!{p1} cr)
+
             .column2(style='background-color:#ddd;')
-                h3 Batman(!{p2} cr)
+
             .column2(style='background-color:#add;')
-                h3 Superman(!{p3} cr)
+
             .column2(style='background-color:#ddd;')
-                h3 Ironman(!{p4} cr)
         .row
             .column(style='background-color:#add;')
+                h3 Cattamanchi(!{p1} cr)
+                hr
                 each player in t1
                     p !{player}
             .column(style='background-color:#ddd;')
+                h3 Kandukuri(!{p2} cr)
+                hr
                 each player1 in t2
                     p !{player1}
             .column(style='background-color:#add;')
+                h3 Gurajada(!{p3} cr)
+                hr
                 each player2 in t3
                     p !{player2}
             .column(style='background-color:#ddd;')
+                h3 Vavilala(!{p4} cr)
+                hr
                 each player3 in t4
                     p !{player3}

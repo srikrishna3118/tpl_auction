@@ -1,7 +1,7 @@
 Telugu Premier League
 ========================
 
-Simple project to generate profiles based on categories 
+Simple project to generate profiles based on categories (batsman, bowler, wicketkeeper, allrounder)
 
  * generate simple database of players registered for the tournament
  * get image data, player strengths, stats and availability  

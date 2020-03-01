@@ -143,6 +143,7 @@ exports.auction = function(req,res){
 
 exports.sold =function(req,res){
     //console.log(req.body);
+    //console.log(req.body.teama);
     var filter={name:req.body.playername};
     players.findOne(filter,function(err,result){
         var newValue = result;
@@ -186,6 +187,7 @@ exports.team = function(req,res){
         if (err)
             res.send(500);
         else{
+            let cnt = result.length;
             var player;
             //console.log(result);
             let team1 =[];
@@ -200,25 +202,34 @@ exports.team = function(req,res){
                 //console.log(row.name);
                 player = makeplayer(row);
                 //console.log(player);
-                if (row.sold.toLowerCase() === "heman") {
+                if (row.sold.toLowerCase() === "cattamanchi") {
                     tp1 = tp1 - row.price;
                     team1.push(player);
                 }
-                if(row.sold.toLowerCase() === "batman"){
+                if(row.sold.toLowerCase() === "kandukuri"){
                     tp2=tp2-row.price;
                     team2.push(player);
                 }
-                if (row.sold.toLowerCase() === "superman"){
+                if (row.sold.toLowerCase() === "gurajada"){
                     tp3=tp3-row.price;
                     team3.push(player);
                 }
-                if(row.sold.toLowerCase() === "ironman") {
+                if(row.sold.toLowerCase() === "vavilala") {
                     tp4 = tp4 - row.price;
                     team4.push(player);
                 }
             });
 
-            res.render('teams', {t1: team1, t2: team2, t3: team3, t4: team4, p1: tp1, p2:tp2, p3:tp3,p4:tp4});
+            res.render('teams', {
+                t1: team1,
+                t2: team2,
+                t3: team3,
+                t4: team4,
+                p1: tp1,
+                p2:tp2,
+                p3:tp3,
+                p4:tp4
+            });
         }
         //console.log(result);
 

@@ -36,7 +36,7 @@ block content
                                     tr
                                         td
                                             h3
-                                                label(for='wk') Wicketkeeping :
+                                                label(for='wk') Wicketkeeping:
                                         td
                                             h3
                                                 progress#wk(value=wk max='100')
@@ -52,13 +52,24 @@ block content
                 form(action='/sold' method='post')
                     table(style='width:70%')
                         tr
+                            td(align='right')
+                                h2
+                                    label.custom-control-label() Team Name:
                             td
-                                label.form(for='team') Team Name:
-                            td
-                                input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
+                                //input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
+                                h3
+                                    input#cattamanchi.custom-control-input(type='radio' value='cattamanchi' name='team' required)
+                                    label.custom-control-label(for='cattamanchi') Cattamanchi
+                                    input#Kandukuri.custom-control-input(type='radio' value='kandukuri' name='team')
+                                    label.custom-control-label(for='Kandukuri') Kandukuri
+                                    input#Gurajada.custom-control-input(type='radio' value='gurajada' name='team')
+                                    label.custom-control-label(for='Gurajada') Gurajaja
+                                    input#Vavilala.custom-control-input(type='radio' value='vavilala' name='team')
+                                    label.custom-control-label(for='Vavilala') Vavilala
                         tr
-                            td
-                                label.form(for='price') bid price:
+                            td(align='right')
+                                h2
+                                    label.form(for='price') Bid price:
                             td
                                 input#price.form-control(type='number' name='price' size='50' placeholder='Amount' required='')
                         tr
@@ -69,7 +80,7 @@ block content
                                     button.btn.btn-primary(type='submit') SOLD
 
     script.
-        var COUNT_START = 10 * 2 * 60; // tenths * seconds * hours
+        var COUNT_START = 10 * 1 * 60; // tenths * seconds * hours
         var count = COUNT_START;
         var playing = false;
         playpause = document.getElementById('playpause');
@@ -92,6 +103,8 @@ block content
             }
             console.log("Reset Timer!");
             count = COUNT_START;
+            playing =true;
+            playpause.innerHTML = "‖";
         }
         function countdown() {
             displayTime();
