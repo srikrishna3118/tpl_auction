@@ -5,7 +5,7 @@ block content
         //each player in data
         .container
             .span4
-                h1 !{name} @Specialization - !{spl}
+                h1 !{name} - !{spl}
                 img.img-left(src=img)
                 .content-heading
                     table()
@@ -57,43 +57,40 @@ block content
                 .row
                     .column3
                         h2
-                            img(src="/assets/images/speak.jpg")
-                            | !{tag}
+                            span.glyphicon.glyphicon-bullhorn
+                            //img(src="/assets/images/speak.jpg")
+                            | &nbsp &nbsp !{tag}
                         h2 Quotation for TPL: !{quote}
                     .column3
                             form(action='/sold' method='post')
-                                table(style='width:70%')
-                                    tr
-                                        td(align='right')
-                                            h2
-                                                label.custom-control-label() Team Name:
-                                        td
-                                            //input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
+                                h2
+                                    label.custom-control-label() Team Name:
+                                        h2
+                                            input#cattamanchi.custom-control-input(type='radio' value='cattamanchi' name='team' required)
+                                            label.custom-control-label(for='cattamanchi') Cattamanchi
+                                            br
+                                            input#Kandukuri.custom-control-input(type='radio' value='kandukuri' name='team')
+                                            label.custom-control-label(for='Kandukuri') Kandukuri
+                                            br
+                                            input#Gurajada.custom-control-input(type='radio' value='gurajada' name='team')
+                                            label.custom-control-label(for='Gurajada') Gurajaja
+                                            br
+                                            input#Vavilala.custom-control-input(type='radio' value='vavilala' name='team')
+                                            label.custom-control-label(for='Vavilala') Vavilala
+                                    table(style='width:70%')
+                                        tr
+                                            td(align='right')
+                                                h2
+                                                    label.form(for='price') Bid price:
+                                            td
+                                                h2
+                                                    input#price.form-control(type='number' name='price' size='50' placeholder='Amount' required='')
 
-                                            h3
-                                                input#cattamanchi.custom-control-input(type='radio' value='cattamanchi' name='team' required)
-                                                label.custom-control-label(for='cattamanchi') Cattamanchi
-                                                //br
-                                                input#Kandukuri.custom-control-input(type='radio' value='kandukuri' name='team')
-                                                label.custom-control-label(for='Kandukuri') Kandukuri
-                                                //br
-                                                input#Gurajada.custom-control-input(type='radio' value='gurajada' name='team')
-                                                label.custom-control-label(for='Gurajada') Gurajaja
-                                                //br
-                                                input#Vavilala.custom-control-input(type='radio' value='vavilala' name='team')
-                                                label.custom-control-label(for='Vavilala') Vavilala
-                                    tr
-                                        td(align='right')
-                                            h2
-                                                label.form(for='price') Bid price:
-                                        td
-                                            input#price.form-control(type='number' name='price' size='50' placeholder='Amount' required='')
-                                    tr
-                                        td
-                                            input#player(type='hidden' name='playername' value=name)
-                                        td
-                                            h3
-                                                button.btn.btn-primary(type='submit') SOLD
+                                            td
+                                                h2
+                                                    button.btn.btn-primary(type='submit') SOLD
+                                            td
+                                                input#player(type='hidden' name='playername' value=name)
 
 
     script.
@@ -151,4 +148,3 @@ block content
         function LeadingZero(Time) {
             return (Time < 10) ? "0" + Time : +Time;
         }
-

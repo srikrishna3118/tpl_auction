@@ -159,25 +159,30 @@ exports.sold =function(req,res){
             //db.close();
         });
     });
-
-    res.render('success',{player:req.body.playername, team: req.body.team, amt: req.body.price });
+    var img = getRandomInt(4);
+    console.log(img);
+    res.render('success',{player:req.body.playername, team: req.body.team, amt: req.body.price, image: img });
 
 };
 function makeplayer(row){
-    var player =row.name.toLowerCase();
+    var player = {name: row.name.toLowerCase() , price: " ".concat(row.price,"Cr"), spl: ""};
+        //row.name.toLowerCase();
     //console.log(player);
     //console.log(row.price);
     if(row.specialization === "Bowler"){
-        player = player.concat("(o)","-",row.price,"cr");
+        player.spl = "/assets/images/icon_ball1.png";
     }
     if(row.specialization === "Batsman"){
-        player = player.concat("(b)","-",row.price,"cr");
+        //player = player.concat("(b)","-",row.price,"cr");
+        player.spl = "/assets/images/icon_bat.png";
     }
     if(row.specialization === "Allrounder"){
-        player = player.concat("(a)","-",row.price,"cr");
+        //player = player.concat("(a)","-",row.price,"cr");
+        player.spl = "/assets/images/icon_all2.png";
     }
     if(row.specialization === "WicketKeeper"){
-        player = player.concat("(w)","-",row.price,"cr");
+        //player = player.concat("(w)","-",row.price,"cr");
+        player.spl = "/assets/images/icon_wk.png";
     }
     return player;
 }

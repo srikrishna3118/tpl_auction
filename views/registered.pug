@@ -10,22 +10,30 @@ block content
         h1 Total number of people registered (excluding Captains, Mentors and including Sivamani) this TPL !{tot}
         .row
             .column(style='background-color:#add;')
-                h2 Batsman !{bat}
+                h2 Batsman &nbsp
+                    img(src="/assets/images/icon_bat.png")
+                    | &nbsp !{bat}
                 hr
                 each player in batsman
                     p !{player}
             .column(style='background-color:#ddd;')
-                h2 Bowler !{bowl}
+                h2 Bowler &nbsp
+                    img(src="/assets/images/icon_ball1.png")
+                    | &nbsp !{bowl}
                 hr
                 each player1 in bowler
                     p !{player1}
             .column(style='background-color:#add;')
-                h2 Allrounder !{all}
+                h2 Allrounder &nbsp
+                    img(src="/assets/images/icon_all2.png")
+                    | &nbsp !{all}
                 hr
                 each player2 in allrounder
                     p !{player2}
             .column(style='background-color:#ddd;')
-                h2 Wicketkeeper !{w}
+                h2 Wicketkeeper &nbsp
+                    img(src="/assets/images/icon_wk.png")
+                    | &nbsp !{w}
                 hr
                 each player3 in wk
                     p !{player3}

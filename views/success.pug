@@ -3,11 +3,20 @@ extends layout2
 block content
     section.auction
         //each player in data
+
         .container
             .span4
-
+                if (image === 4)
+                    img.img-right(src="/assets/images/U_sixer.png")
+                if (image === 3)
+                    img.img-right(src="/assets/images/U_wide.png")
+                if (image === 2)
+                    img.img-right(src="/assets/images/U_noball.png")
+                if (image === 1)
+                    img.img-right(src="/assets/images/U_out.png")
+                if (image === 0)
+                    img.img-right(src="/assets/images/U_tv.png")
                 center
                     h1.center-block !{player} is bought by Team !{team} for !{amt} Crores
-                    img(src="/assets/images/sports-and-competition.png", )
                     h2.center-block Congratulations well played....
 

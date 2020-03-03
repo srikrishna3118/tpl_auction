@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/flat-icon/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .span4 .img-right {
+            margin-top: 100px;
+            margin-right: 20px;
+            float: right;
+        }
+    </style>
 </head>
 <body>
 <div id="content-wrapper">
@@ -39,25 +46,28 @@
 
     <section class="auction">
         <div class="container">
-            <div class="page-section">
-                <form action="/auction" method="get" class="form-signin">
-                    <h1 class="form-signin-heading">Select a category</h1>
-                    <div class="form-group">
-                        <div class="custom-control custom-radio">
-                            <h3>
-                            <input type="radio" class="custom-control-input" id="batsman" name="bat">
-                            <label class="custom-control-label" for="batsman">Batsman</label><br><br>
-                            <input type="radio" class="custom-control-input" id="bowler" name="bowl">
-                            <label class="custom-control-label" for="bowler">Bowler</label><br><br>
-                            <input type="radio" class="custom-control-input" id="all" name="all">
-                            <label class="custom-control-label" for="all">Allrounder</label><br><br>
-                            <input type="radio" class="custom-control-input" id="wk" name="wk">
-                            <label class="custom-control-label" for="wk">Wicketkeeper</label><br><br>
-                            </h3>
+            <div class="span4">
+                <img class="img-right" src="/assets/images/player.png" />
+                <div class="page-section">
+                    <form action="/auction" method="get" class="form-signin">
+                        <h1 class="form-signin-heading">Select a category</h1>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <h3>
+                                <input type="radio" class="custom-control-input" id="batsman" name="bat">
+                                <label class="custom-control-label" for="batsman">Batsman</label><br><br>
+                                <input type="radio" class="custom-control-input" id="bowler" name="bowl">
+                                <label class="custom-control-label" for="bowler">Bowler</label><br><br>
+                                <input type="radio" class="custom-control-input" id="all" name="all">
+                                <label class="custom-control-label" for="all">Allrounder</label><br><br>
+                                <input type="radio" class="custom-control-input" id="wk" name="wk">
+                                <label class="custom-control-label" for="wk">Wicketkeeper</label><br><br>
+                                </h3>
+                            </div>
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> </span>  Submit</button>
                         </div>
-                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"> </span>  Submit</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
