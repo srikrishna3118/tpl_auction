@@ -45,39 +45,56 @@ block content
                                 //h3     Fielding - !{field}\
                             td
                                 p#time_left.maa
+                                    span.glyphicon.glyphicon-bell
                                     ul.saa
                                         li#playpause.paa &#x25B6;
                                         li#reset.paa &olarr;
-                h2 TAGLINE:  !{tag}
-                form(action='/sold' method='post')
-                    table(style='width:70%')
-                        tr
-                            td(align='right')
-                                h2
-                                    label.custom-control-label() Team Name:
-                            td
-                                //input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
-                                h3
-                                    input#cattamanchi.custom-control-input(type='radio' value='cattamanchi' name='team' required)
-                                    label.custom-control-label(for='cattamanchi') Cattamanchi
-                                    input#Kandukuri.custom-control-input(type='radio' value='kandukuri' name='team')
-                                    label.custom-control-label(for='Kandukuri') Kandukuri
-                                    input#Gurajada.custom-control-input(type='radio' value='gurajada' name='team')
-                                    label.custom-control-label(for='Gurajada') Gurajaja
-                                    input#Vavilala.custom-control-input(type='radio' value='vavilala' name='team')
-                                    label.custom-control-label(for='Vavilala') Vavilala
-                        tr
-                            td(align='right')
-                                h2
-                                    label.form(for='price') Bid price:
-                            td
-                                input#price.form-control(type='number' name='price' size='50' placeholder='Amount' required='')
-                        tr
-                            td
-                                input#player(type='hidden' name='playername' value=name)
-                            td
-                                h3
-                                    button.btn.btn-primary(type='submit') SOLD
+
+
+                            //td
+
+                                //iframe(src='https://cricheroes.in/player-profile/1746135/Kranthi?#bowling' height='600' width='300')
+                .row
+                    .column3
+                        h2
+                            img(src="/assets/images/speak.jpg")
+                            | !{tag}
+                        h2 Quotation for TPL: !{quote}
+                    .column3
+                            form(action='/sold' method='post')
+                                table(style='width:70%')
+                                    tr
+                                        td(align='right')
+                                            h2
+                                                label.custom-control-label() Team Name:
+                                        td
+                                            //input#team.form-control(type='text' name='team' size='50' placeholder='Enter Team name' required='')
+
+                                            h3
+                                                input#cattamanchi.custom-control-input(type='radio' value='cattamanchi' name='team' required)
+                                                label.custom-control-label(for='cattamanchi') Cattamanchi
+                                                //br
+                                                input#Kandukuri.custom-control-input(type='radio' value='kandukuri' name='team')
+                                                label.custom-control-label(for='Kandukuri') Kandukuri
+                                                //br
+                                                input#Gurajada.custom-control-input(type='radio' value='gurajada' name='team')
+                                                label.custom-control-label(for='Gurajada') Gurajaja
+                                                //br
+                                                input#Vavilala.custom-control-input(type='radio' value='vavilala' name='team')
+                                                label.custom-control-label(for='Vavilala') Vavilala
+                                    tr
+                                        td(align='right')
+                                            h2
+                                                label.form(for='price') Bid price:
+                                        td
+                                            input#price.form-control(type='number' name='price' size='50' placeholder='Amount' required='')
+                                    tr
+                                        td
+                                            input#player(type='hidden' name='playername' value=name)
+                                        td
+                                            h3
+                                                button.btn.btn-primary(type='submit') SOLD
+
 
     script.
         var COUNT_START = 10 * 1 * 60; // tenths * seconds * hours

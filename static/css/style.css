@@ -382,6 +382,7 @@ p{
 .auction{
     background: url("../assets/images/auction.JPG") center repeat;
     color: #ffffff;
+    height: 900px;
     background-color: black;
 }
 .auction.textarea {

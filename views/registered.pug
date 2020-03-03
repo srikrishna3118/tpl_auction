@@ -2,25 +2,30 @@ extends layout2
 
 block content
     section.page-section
-        //- var text = JSON.stringify(data,null,2,100).replace(/\n/g, '<br>')
+        - var bat = batsman.length
+        - var bowl = bowler.length
+        - var all = allrounder.length
+        - var w = wk.length
+        - var tot = w+all+bat+bowl
+        h1 Total number of people registered (excluding Captains, Mentors and including Sivamani) this TPL !{tot}
         .row
             .column(style='background-color:#add;')
-                h2 Batsman
+                h2 Batsman !{bat}
                 hr
                 each player in batsman
                     p !{player}
             .column(style='background-color:#ddd;')
-                h2 Bowler
+                h2 Bowler !{bowl}
                 hr
                 each player1 in bowler
                     p !{player1}
             .column(style='background-color:#add;')
-                h2 Allrounder
+                h2 Allrounder !{all}
                 hr
                 each player2 in allrounder
                     p !{player2}
             .column(style='background-color:#ddd;')
-                h2 Wicketkeeper
+                h2 Wicketkeeper !{w}
                 hr
                 each player3 in wk
                     p !{player3}

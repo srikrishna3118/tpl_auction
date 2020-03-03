@@ -132,6 +132,7 @@ exports.auction = function(req,res){
                     field: getStats(result.fielding),
                     wk: getStats(result.keeping),
                     tag: result.tagline,
+                    quote: result.quote,
                     img: out_img
                 })
             }else {

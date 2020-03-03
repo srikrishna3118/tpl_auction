@@ -105,7 +105,7 @@ exports.get = function (req, res) {
             //spreadsheetId: '1BjYukL8TS4xtO4fw4J_R4O6HORRp-cEfJdjVDdT94kY',
             spreadsheetId: '1TpUQKKkV3krBqikZBlfVANsIX2V__fhwRtM2d8GeASA',
             // (2) Changed the range of data being pulled
-            range: 'sheet1!B2:O1000',
+            range: 'sheet1!B2:P1000',
         }, (err, response) => {
             // (3) Checked for error messages
             if (err) return console.log('The API returned an error: ' + err);
@@ -124,6 +124,7 @@ exports.get = function (req, res) {
                         "fielding":row[10],
                         "specialization":row[12],
                         "tagline":row[13],
+                        "quote":row[14],
                         "sold":"unsold",
                         "price":"0"
                     };
