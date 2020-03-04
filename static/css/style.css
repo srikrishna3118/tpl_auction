@@ -235,7 +235,12 @@ p{
   background: url("../assets/images/tlogo.png") left center no-repeat;
   padding:0px 90px;
 }
-
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 .page-section{
   padding-top: 100px;
   padding-bottom: 120px;
@@ -379,11 +384,11 @@ p{
     -webkit-box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.21);
             box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.21);
   }
+
 .auction{
-    background: url("../assets/images/auction.JPG") center repeat;
     color: #ffffff;
     height: 900px;
-    background-color: black;
+    background: black url("../assets/images/auction.JPG") repeat center;
 }
 .auction.textarea {
     color: black;

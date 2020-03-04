@@ -187,7 +187,7 @@ function makeplayer(row){
     return player;
 }
 
-//To display all the registered candidates
+//To display all the purchased players
 exports.team = function(req,res){
     players.find({},{ projection: {_id: 0, name: 1,sold: 1,specialization:1, price:1}}).toArray(function(err, result) {
         if (err)
