@@ -208,19 +208,19 @@ exports.team = function(req,res){
                 //console.log(row.name);
                 player = makeplayer(row);
                 //console.log(player);
-                if (row.sold.toLowerCase() === "cattamanchi") {
+                if (row.sold.toLowerCase() === "tirupathi") {
                     tp1 = tp1 - row.price;
                     team1.push(player);
                 }
-                if(row.sold.toLowerCase() === "kandukuri"){
+                if(row.sold.toLowerCase() === "vizag"){
                     tp2=tp2-row.price;
                     team2.push(player);
                 }
-                if (row.sold.toLowerCase() === "gurajada"){
+                if (row.sold.toLowerCase() === "hyderabad"){
                     tp3=tp3-row.price;
                     team3.push(player);
                 }
-                if(row.sold.toLowerCase() === "vavilala") {
+                if(row.sold.toLowerCase() === "warangal") {
                     tp4 = tp4 - row.price;
                     team4.push(player);
                 }
