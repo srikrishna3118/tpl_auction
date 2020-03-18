@@ -76,23 +76,28 @@ function makefilter(req){
     var filter= {};
     if(req.query.bat==="on"){
         //console.log("selected batsman");
-        filter = {specialization:"Batsman", sold: "unsold"};
+        filter = {specialization:"Batsman", sold: "unsold",unsold: false};
     }
     else
         if(req.query.bowl==="on"){
             //console.log("selected bowler");
-            filter = {specialization:"Bowler", sold: "unsold"};
+            filter = {specialization:"Bowler", sold: "unsold",unsold: false};
         }
         else
             if(req.query.all==="on"){
                 //console.log("selected all rounder");
-                filter = {specialization:"Allrounder", sold: "unsold"};
+                filter = {specialization:"Allrounder", sold: "unsold",unsold: false};
             }
             else
                 if(req.query.wk==="on"){
                     //console.log("selected wicketkeeper");
-                    filter = {specialization:"WicketKeeper", sold: "unsold"};
+                    filter = {specialization:"WicketKeeper", sold: "unsold",unsold: false};
                 }
+                else
+                    if(req.query.us==="on"){
+                        //console.log("selected wicketkeeper");
+                        filter = {unsold: true};
+                    }
     return filter
 }
 function getRandomInt(max) {
@@ -142,15 +147,20 @@ exports.auction = function(req,res){
     });
 };
 
-exports.sold =function(req,res){
+
+exports.sold = function(req,res){
     //console.log(req.body);
     //console.log(req.body.teama);
     var filter={name:req.body.playername};
     players.findOne(filter,function(err,result){
         var newValue = result;
-        newValue.sold=req.body.team;
-        newValue.price=req.body.price;
-
+        if(req.body.team === "unsold"){
+            newValue.unsold = true
+        }
+        else{
+            newValue.sold=req.body.team;
+            newValue.price=req.body.price;
+        }
         //console.log(newValue);
 
         players.update(filter, newValue, function(err, res) {

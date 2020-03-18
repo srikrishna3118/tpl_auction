@@ -126,7 +126,8 @@ exports.get = function (req, res) {
                         "tagline":row[13],
                         "quote":row[14],
                         "sold":"unsold",
-                        "price":"0"
+                        "price":"0",
+                        "unsold":false
                     };
                     data.push(record);
                 });
