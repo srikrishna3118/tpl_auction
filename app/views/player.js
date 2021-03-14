@@ -130,10 +130,11 @@ exports.auction = function(req,res){
                 var img = result.image.split("=");
 
                 var out_img = "https://drive.google.com/thumbnail?id=";
-                //var out_img ="https://drive.google.com/file/d/"
-                out_img = out_img.concat(img[1],"&sz=w320");
+                out_img = out_img.concat(img[1],"&sz=w480");
                 //console.log(out_img);
-
+                //var out_img = "./static/assets/images/players/";
+                //var out_img = out_img.concat(result.image,".png");
+                //console.log(out_img);
                 res.render('auction', {
                     name: result.name,
                     spl: result.specialization,
@@ -141,8 +142,8 @@ exports.auction = function(req,res){
                     bowl: getStats(result.bowling),
                     field: getStats(result.keeping),
                     wk: getStats(result.keeping),
-                    //tag: result.tagline,
-                    //quote: result.quote,
+                    tag: result.available,
+                    quote: result.quote,
                     img: out_img
                 })
             }else {
@@ -229,11 +230,11 @@ exports.team = function(req,res){
                     team1.push(player);
                 }
                 if(row.sold.toLowerCase() === team_name[1]){
-                    tp2=tp2-row.price;
+                    tp2= tp2-row.price;
                     team2.push(player);
                 }
                 if (row.sold.toLowerCase() === team_name[2]){
-                    tp3=tp3-row.price;
+                    tp3= tp3-row.price;
                     team3.push(player);
                 }
                  if(row.sold.toLowerCase() === team_name[3]) {
@@ -243,11 +244,14 @@ exports.team = function(req,res){
 
             });
             let baseprice = 4
-            //console.log(team1.length)
-            let mp1 = tp1 - (9*4)
-            let mp2 = tp2 - (9*4)
-            let mp3 = tp3 - (9*4)
-            let mp4 = tp4 - (9*4)
+            let maxplayers =12
+            console.log(team1.length)
+            let mp1 = tp1 - ((maxplayers-team1.length-1)*4)
+            let mp2 = tp2 - ((maxplayers-team2.length-1)*4)
+            let mp3 = tp3 - ((maxplayers-team3.length-1)*4)
+            let mp4 = tp4 - ((maxplayers-team4.length-1)*4)
+            console.log(team1.length)
+            console.log(mp1,mp2,mp3,mp4)
             res.render('teams', {
                 t1: team1,
                 t2: team2,

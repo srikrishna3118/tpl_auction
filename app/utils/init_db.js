@@ -27,8 +27,9 @@ var fs = require('fs'),
     readline = require('readline'),
     {google} = require('googleapis');
 
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/drive.readonly', 'https://www.googleapis.com/auth/drive.metadata.readonly'];
 const TOKEN_PATH = 'token.json';
+
 
 function sanitize(doc) {
     delete doc._id;
@@ -131,7 +132,23 @@ exports.get = function (req, res) {
                         "price":"0",
                         "unsold":false
                     };*/
+
+                const drive = google.drive({version: 'v3', auth});
                 rows.forEach (row => {
+                    /*let img_id = row[0].split("=");
+                    let path = fs.createWriteStream("./static/assets/images/players/"+img_id[1]+".png");
+                    console.log(path)
+                    drive.files.get({ fileId: img_id[1], alt: 'media'}, {responseType: 'stream'},
+                        function(err, res){
+                            res.data
+                                .on('end', () => {
+                                    console.log('Done');
+                                })
+                                .on('error', err => {
+                                    console.log('Error', err);
+                                })
+                            .pipe(path);
+                        });*/
                     let record = {
                         "image":row[0],
                         "name":row[1],
@@ -142,7 +159,7 @@ exports.get = function (req, res) {
                         "fielding":row[14],
                         "specialization":row[10],
                         "available":row[11],
-                        "quote":row[14],
+                        "quote":row[12],
                         "sold":"unsold",
                         "price":"0",
                         "unsold":false
@@ -158,4 +175,5 @@ exports.get = function (req, res) {
 
         });
     }
+
 };

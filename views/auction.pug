@@ -55,7 +55,7 @@ block content
 
                                 //iframe(src='https://cricheroes.in/player-profile/1746135/Kranthi?#bowling' height='600' width='300')
                 .row
-                    .column3
+                    .column50
                         h2
                             //span.glyphicon.glyphicon-bullhorn
                             img(src="/assets/images/speak.jpg")
@@ -63,22 +63,22 @@ block content
                         h2
                             img(src="/assets/images/spk.jpg")
                             | &nbsp !{quote}
-                    .column3
+                    .column50
                             form(action='/sold' method='post')
                                 h2
                                     label.custom-control-label() Team Name:
                                     br
                                     input#allagadda.custom-control-input(type='radio' value=allagadda name='team' required)
-                                    label.custom-control-label(for='allagadda') Allagadda Dynamites
+                                    label.custom-control-label(for='allagadda') Jaswanth
                                     br
                                     input#kakinada.custom-control-input(type='radio' value='kakinada' name='team')
-                                    label.custom-control-label(for='kakinada') Kakinada Kings
+                                    label.custom-control-label(for='kakinada') Teja
                                     br
                                     input#guntur.custom-control-input(type='radio' value='guntur' name='team')
-                                    label.custom-control-label(for='guntur') Guntur Gladiators
+                                    label.custom-control-label(for='guntur') Bhargav
                                     br
                                     input#anathapur.custom-control-input(type='radio' value='anathapur' name='team')
-                                    label.custom-control-label(for='anathapur') Ananthapur Arrows
+                                    label.custom-control-label(for='anathapur') Srikar
                                     br
                                     input#unsold.custom-control-input(type='radio' value='unsold' name='team')
                                     label.custom-control-label(for='unsold') unsold
@@ -98,7 +98,7 @@ block content
                                                 input#player(type='hidden' name='playername' value=name)
 
     script.
-        var COUNT_START = 10 * 1 * 60; // tenths * seconds * hours
+        var COUNT_START = 10 * 1 * 45; // tenths * seconds * hours
         var count = COUNT_START;
         var playing = false;
         playpause = document.getElementById('playpause');
