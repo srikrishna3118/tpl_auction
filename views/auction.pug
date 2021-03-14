@@ -67,19 +67,18 @@ block content
                             form(action='/sold' method='post')
                                 h2
                                     label.custom-control-label() Team Name:
-                                    each val in ["Team1", "Team2", "Team3", "Team4"]
-                                      br
-                                      input#val.custom-control-input(type='radio' value=val name='team' required)
-                                      label.custom-control-label(for=val) Royal Seema
-                                    //br
-                                    //input#kosta.custom-control-input(type='radio' value='kosta' name='team')
-                                    //label.custom-control-label(for='kosta') Kosta Kurralu
-                                    //br
-                                    //input#telangana.custom-control-input(type='radio' value='telangana' name='team')
-                                    //label.custom-control-label(for='telangana') Telangana Topulu
-                                    //br
-                                    //input#warangal.custom-control-input(type='radio' value='warangal' name='team')
-                                    //label.custom-control-label(for='warangal') Warangal Warriors
+                                    br
+                                    input#allagadda.custom-control-input(type='radio' value=allagadda name='team' required)
+                                    label.custom-control-label(for='allagadda') Allagadda Dynamites
+                                    br
+                                    input#kakinada.custom-control-input(type='radio' value='kakinada' name='team')
+                                    label.custom-control-label(for='kakinada') Kakinada Kings
+                                    br
+                                    input#guntur.custom-control-input(type='radio' value='guntur' name='team')
+                                    label.custom-control-label(for='guntur') Guntur Gladiators
+                                    br
+                                    input#anathapur.custom-control-input(type='radio' value='anathapur' name='team')
+                                    label.custom-control-label(for='anathapur') Ananthapur Arrows
                                     br
                                     input#unsold.custom-control-input(type='radio' value='unsold' name='team')
                                     label.custom-control-label(for='unsold') unsold

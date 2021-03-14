@@ -147,7 +147,7 @@ exports.get = function (req, res) {
                         "price":"0",
                         "unsold":false
                     };
-                    console.log(record)
+                    //console.log(record)
                     data.push(record);
                 });
                 players.insert(data, (err, result) => {

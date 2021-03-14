@@ -5,7 +5,7 @@ const client = new MongoClient(config.mongo.uri, { useNewUrlParser: true });
 
 var players= null;// = require('../models/player');
 
-const team_name = ["Team1", "Team2", "Team3", "Team4"];
+const team_name = ["allagadda", "kakinada", "guntur", "anathapur"];
 const Bat = "Batsman"
 const Bowl = "Bowler"
 const Wk = "WicketKeeper"
@@ -242,6 +242,7 @@ exports.team = function(req,res){
                  }
 
             });
+            let baseprice = 4
             //console.log(team1.length)
             let mp1 = tp1 - (9*4)
             let mp2 = tp2 - (9*4)
