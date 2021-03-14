@@ -20,7 +20,7 @@ function getStats(rating){
     var r = rating.toLowerCase().split(" ").join("");
     //console.log("rating ",r);
     switch(r) {
-        case "beginners":
+        case "beginner":
             // code block
             value = 20;
             break;
