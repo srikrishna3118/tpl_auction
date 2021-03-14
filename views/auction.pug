@@ -67,18 +67,19 @@ block content
                             form(action='/sold' method='post')
                                 h2
                                     label.custom-control-label() Team Name:
-                                    br
-                                    input#tirupathi.custom-control-input(type='radio' value='tirupathi' name='team' required)
-                                    label.custom-control-label(for='tirupathi') Tirupathi Titans
-                                    br
-                                    input#vizag.custom-control-input(type='radio' value='vizag' name='team')
-                                    label.custom-control-label(for='vizag') Vizag veterans
-                                    br
-                                    input#hyderabad.custom-control-input(type='radio' value='hyderabad' name='team')
-                                    label.custom-control-label(for='hyderabad') Hyderabad Hunters
-                                    br
-                                    input#warangal.custom-control-input(type='radio' value='warangal' name='team')
-                                    label.custom-control-label(for='warangal') Warangal Warriors
+                                    each val in ["Team1", "Team2", "Team3", "Team4"]
+                                      br
+                                      input#val.custom-control-input(type='radio' value=val name='team' required)
+                                      label.custom-control-label(for=val) Royal Seema
+                                    //br
+                                    //input#kosta.custom-control-input(type='radio' value='kosta' name='team')
+                                    //label.custom-control-label(for='kosta') Kosta Kurralu
+                                    //br
+                                    //input#telangana.custom-control-input(type='radio' value='telangana' name='team')
+                                    //label.custom-control-label(for='telangana') Telangana Topulu
+                                    //br
+                                    //input#warangal.custom-control-input(type='radio' value='warangal' name='team')
+                                    //label.custom-control-label(for='warangal') Warangal Warriors
                                     br
                                     input#unsold.custom-control-input(type='radio' value='unsold' name='team')
                                     label.custom-control-label(for='unsold') unsold

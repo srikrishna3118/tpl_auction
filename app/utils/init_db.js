@@ -103,9 +103,11 @@ exports.get = function (req, res) {
         sheets.spreadsheets.values.get({
             // (1) Changed spreadsheet ID
             //spreadsheetId: '1BjYukL8TS4xtO4fw4J_R4O6HORRp-cEfJdjVDdT94kY',
-            spreadsheetId: '1TpUQKKkV3krBqikZBlfVANsIX2V__fhwRtM2d8GeASA',
+            //spreadsheetId: '1TpUQKKkV3krBqikZBlfVANsIX2V__fhwRtM2d8GeASA',
+            //spreadsheetId: '16y1Q5k5_WCpmJg2BeWHQavrmv7ALOhEoIGKtawixIQs',
+            spreadsheetId: '18fwdnmpizg6QoZ-E9Kuy1pRZI-6U_2XsPrFWLXwJhXQ',
             // (2) Changed the range of data being pulled
-            range: 'sheet1!B2:P1000',
+            range: '2021!B2:P1000',
         }, (err, response) => {
             // (3) Checked for error messages
             if (err) return console.log('The API returned an error: ' + err);
@@ -113,7 +115,7 @@ exports.get = function (req, res) {
             players.clear((err, result) => {
                 let rows = response.data.values;
                 let data = [];
-                rows.forEach (row => {
+/*                rows.forEach (row => {
                     let record = {
                         "image":row[0],
                         "name":row[1],
@@ -128,7 +130,24 @@ exports.get = function (req, res) {
                         "sold":"unsold",
                         "price":"0",
                         "unsold":false
+                    };*/
+                rows.forEach (row => {
+                    let record = {
+                        "image":row[0],
+                        "name":row[1],
+                        "dept":row[2],
+                        "batting":row[7],
+                        "bowling":row[8],
+                        "keeping":row[9],
+                        "fielding":row[14],
+                        "specialization":row[10],
+                        "available":row[11],
+                        "quote":row[14],
+                        "sold":"unsold",
+                        "price":"0",
+                        "unsold":false
                     };
+                    console.log(record)
                     data.push(record);
                 });
                 players.insert(data, (err, result) => {
