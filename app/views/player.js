@@ -5,7 +5,7 @@ const client = new MongoClient(config.mongo.uri, { useNewUrlParser: true });
 
 var players= null;// = require('../models/player');
 
-const team_name = ["allagadda", "kakinada", "guntur", "anathapur"];
+const team_name = ["allagadda", "kakinada", "guntur", "guntur"];
 const Bat = "Batsman"
 const Bowl = "Bowler"
 const Wk = "WicketKeeper"
@@ -129,11 +129,11 @@ exports.auction = function(req,res){
                 //console.log(result);
                 var img = result.image.split("=");
 
-                var out_img = "https://drive.google.com/thumbnail?id=";
-                out_img = out_img.concat(img[1],"&sz=w480");
+                //var out_img = "https://drive.google.com/thumbnail?id=";
+                //out_img = out_img.concat(img[1],"&sz=w480");
                 //console.log(out_img);
-                //var out_img = "./static/assets/images/players/";
-                //var out_img = out_img.concat(result.image,".png");
+                var out_img = "/assets/images/players/";
+                var out_img = out_img.concat(img[1],".jpg");
                 //console.log(out_img);
                 res.render('auction', {
                     name: result.name,
