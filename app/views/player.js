@@ -5,7 +5,7 @@ const client = new MongoClient(config.mongo.uri, { useNewUrlParser: true });
 
 var players= null;// = require('../models/player');
 
-const team_name = ["allagadda", "kakinada", "guntur", "guntur"];
+const team_name = ["allagadda", "kakinada", "guntur", "anathapur"];
 const Bat = "Batsman"
 const Bowl = "Bowler"
 const Wk = "WicketKeeper"
@@ -244,7 +244,7 @@ exports.team = function(req,res){
 
             });
             let baseprice = 4
-            let maxplayers =12
+            let maxplayers = 12
             console.log(team1.length)
             let mp1 = tp1 - ((maxplayers-team1.length-1)*4)
             let mp2 = tp2 - ((maxplayers-team2.length-1)*4)
@@ -264,7 +264,7 @@ exports.team = function(req,res){
                 m1: mp1,
                 m2: mp2,
                 m3: mp3,
-                m4:mp4
+                m4: mp4
             });
         }
         //console.log(result);
