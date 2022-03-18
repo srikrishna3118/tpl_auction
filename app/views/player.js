@@ -5,10 +5,10 @@ const client = new MongoClient(config.mongo.uri, { useNewUrlParser: true });
 
 var players= null;// = require('../models/player');
 
-const team_name = ["allagadda", "kakinada", "guntur", "anathapur"];
+const team_name = ["kakatiya", "vijayanagara", "chalukya", "satavahana"];
 const Bat = "Batsman"
 const Bowl = "Bowler"
-const Wk = "WicketKeeper"
+const Wk = "Wicketkeeper"
 const All = "Allrounder"
 
 client.connect(err => {
@@ -81,28 +81,28 @@ function makefilter(req){
     var filter= {};
     if(req.query.bat==="on"){
         //console.log("selected batsman");
-        filter = {specialization:Bat, sold: "unsold",unsold: false};
+        filter = {specialization:Bat, sold: "unsold",unsold: false, premimum:"No"};
     }
     else
         if(req.query.bowl==="on"){
-            //console.log("selected bowler");
-            filter = {specialization:Bowl, sold: "unsold",unsold: false};
+            filter = {specialization:Bowl, sold: "unsold",unsold: false, premimum:"No"};
         }
         else
             if(req.query.all==="on"){
-                //console.log("selected all rounder");
-                filter = {specialization:All, sold: "unsold",unsold: false};
+                filter = {specialization:All, sold: "unsold",unsold: false, premimum:"No"};
             }
             else
                 if(req.query.wk==="on"){
-                    //console.log("selected wicketkeeper");
-                    filter = {specialization:Wk, sold: "unsold",unsold: false};
+                    filter = {specialization:Wk, sold: "unsold",unsold: false, premimum:"No"};
                 }
                 else
                     if(req.query.us==="on"){
-                        //console.log("selected wicketkeeper");
                         filter = {unsold: true};
                     }
+                    else
+                        if (req.query.p==="on"){
+                            filter = {premimum:"Yes",sold: "unsold",unsold: false};
+                        }
     return filter
 }
 function getRandomInt(max) {
@@ -127,23 +127,27 @@ exports.auction = function(req,res){
             }
             if (result) {
                 //console.log(result);
-                var img = result.image.split("=");
+                var img = result.image//.split("=");
 
                 //var out_img = "https://drive.google.com/thumbnail?id=";
                 //out_img = out_img.concat(img[1],"&sz=w480");
                 //console.log(out_img);
                 var out_img = "/assets/images/players/";
-                var out_img = out_img.concat(img[1],".jpg");
+                var out_img = out_img.concat(img,".jpeg");//[1],".jpg");
                 //console.log(out_img);
                 res.render('auction', {
                     name: result.name,
                     spl: result.specialization,
-                    bat: getStats(result.batting),
-                    bowl: getStats(result.bowling),
-                    field: getStats(result.keeping),
-                    wk: getStats(result.keeping),
+                    //bat: getStats(result.batting),
+                    //bowl: getStats(result.bowling),
+                    //field: getStats(result.keeping),
+                    //wk: getStats(result.keeping),
+                    bat: result.batting,
+                    bats: result.batsman,
+                    bowl: result.batting,
+                    bowls: result.bowler,
                     tag: result.available,
-                    quote: result.quote,
+                    //quote: result.quote,
                     img: out_img
                 })
             }else {
@@ -177,7 +181,7 @@ exports.sold = function(req,res){
         });
     });
     var img = getRandomInt(4);
-    console.log(img);
+    //console.log(img);
     res.render('success',{player:req.body.playername, team: req.body.team, amt: req.body.price, image: img });
 
 };
@@ -217,10 +221,10 @@ exports.team = function(req,res){
             let team2 =[];
             let team3 =[];
             let team4 =[];
-            let tp1=100;
-            let tp2=100;
-            let tp3=100;
-            let tp4=100;
+            let tp1=150;
+            let tp2=150;
+            let tp3=150;
+            let tp4=150;
             result.forEach(row=>{
                 //console.log(row.name);
                 player = makeplayer(row);
@@ -243,13 +247,13 @@ exports.team = function(req,res){
                  }
 
             });
-            let baseprice = 4
-            let maxplayers = 12
-            console.log(team1.length)
-            let mp1 = tp1 - ((maxplayers-team1.length-1)*4)
-            let mp2 = tp2 - ((maxplayers-team2.length-1)*4)
-            let mp3 = tp3 - ((maxplayers-team3.length-1)*4)
-            let mp4 = tp4 - ((maxplayers-team4.length-1)*4)
+            let baseprice = 2
+            let maxplayers = 15
+            //console.log(team1.length)
+            let mp1 = tp1 - ((maxplayers-team1.length-1)*2)
+            let mp2 = tp2 - ((maxplayers-team2.length-1)*2)
+            let mp3 = tp3 - ((maxplayers-team3.length-1)*2)
+            let mp4 = tp4 - ((maxplayers-team4.length-1)*2)
             console.log(team1.length)
             console.log(mp1,mp2,mp3,mp4)
             res.render('teams', {

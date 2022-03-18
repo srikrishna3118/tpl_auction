@@ -108,7 +108,7 @@ exports.get = function (req, res) {
             //spreadsheetId: '16y1Q5k5_WCpmJg2BeWHQavrmv7ALOhEoIGKtawixIQs',
             spreadsheetId: '18fwdnmpizg6QoZ-E9Kuy1pRZI-6U_2XsPrFWLXwJhXQ',
             // (2) Changed the range of data being pulled
-            range: '2021!B2:P1000',
+            range: '2022!B2:P1000',
         }, (err, response) => {
             // (3) Checked for error messages
             if (err) return console.log('The API returned an error: ' + err);
@@ -151,15 +151,18 @@ exports.get = function (req, res) {
                         });*/
                     let record = {
                         "image":row[0],
-                        "name":row[1],
-                        "dept":row[2],
-                        "batting":row[7],
-                        "bowling":row[8],
-                        "keeping":row[9],
-                        "fielding":row[14],
-                        "specialization":row[10],
-                        "available":row[11],
-                        "quote":row[12],
+                        "name":row[0],
+                        //"dept":row[2],
+                        "batting":row[2],
+                        "batsman":row[3],
+                        "bowling":row[5],
+                        "bowler":row[4],
+                        //"keeping":row[9],
+                        //"fielding":row[14],
+                        "specialization":row[1],
+                        "available":row[6],
+                        //"quote":row[12],
+                        "premimum":row[8],
                         "sold":"unsold",
                         "price":"0",
                         "unsold":false

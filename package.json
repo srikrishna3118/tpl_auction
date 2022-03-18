@@ -9,7 +9,7 @@
   },
   "author": "Toby Jaffey <toby@1248.io>",
   "devDependencies": {
-    "jshint": "^2.11.0",
+    "jshint": "^2.13.4",
     "nodemon": "~0.7.4"
   },
   "dependencies": {
