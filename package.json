@@ -16,7 +16,7 @@
     "URIjs": "~1.10.2",
     "body-parser": "^1.19.0",
     "errorhandler": "^1.5.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.0",
     "googleapis": "^39.2.0",
     "gs": "0.0.2",
