@@ -129,11 +129,11 @@ exports.auction = function(req,res){
                 //console.log(result);
                 var img = result.image.split("=");
 
-                var out_img = "https://drive.google.com/thumbnail?id=";
-                out_img = out_img.concat(img[1],"&sz=w480");
+                //var out_img = "https://drive.google.com/thumbnail?id=";
+                //out_img = out_img.concat(img[1],"&sz=w480");
                 //console.log(out_img);
-                //var out_img = "/assets/images/players/";
-                //var out_img = out_img.concat(img[1],".jpg");
+                var out_img = "/assets/images/players/";
+                var out_img = out_img.concat(img[1],".jpeg");
                 console.log(out_img);
                 res.render('auction', {
                     name: result.name,

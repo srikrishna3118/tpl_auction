@@ -27,7 +27,7 @@ var fs = require('fs'),
     readline = require('readline'),
     {google} = require('googleapis');
 
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly','https://www.googleapis.com/auth/drive.readonly', 'https://www.googleapis.com/auth/drive.metadata.readonly','https://www.googleapis.com/auth/drive.file'];
 const TOKEN_PATH = 'token.json';
 
 
@@ -119,20 +119,27 @@ exports.get = function (req, res) {
                 let data = [];
                 const drive = google.drive({version: 'v3', auth});
                 rows.forEach (row => {
-                    // let img_id = row[2].split("=");
-                    // let path = fs.createWriteStream("./static/assets/images/players/"+img_id[1]+".jpeg");
-                    // console.log(path)
-                    // drive.files.get({ fileId: img_id[1], alt: 'media'}, {responseType: 'stream'},
-                    //     function(err, res){
-                    //         res.data
-                    //             .on('end', () => {
-                    //                 console.log('Done');
-                    //             })
-                    //             .on('error', err => {
-                    //                 console.log('Error', err);
-                    //             })
-                    //         .pipe(path);
-                    //     });
+                    let img_id = row[2].split("=");
+                    const path = fs.createWriteStream("./static/assets/images/players/"+img_id[1]+".jpeg");
+                    //console.log(path)
+                    path.on('finish', function () {
+                        console.log('downloaded');
+                    });
+                    drive.files.get({ fileId: img_id[1], auth, alt: 'media'}, {responseType: 'stream'},
+                        function(err, res){
+                        if (err){
+                            console.log('Error during download', err);
+                            // return;
+                        }
+                            res.data
+                                .on('end', () => {
+                                    console.log('Done');
+                                })
+                                .on('error', err => {
+                                    console.log('Error', err);
+                                })
+                            .pipe(path);
+                        });
                     let record = {
                         "image":row[2],
                         "name":row[1],
