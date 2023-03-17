@@ -16,4 +16,5 @@ router.post("/sold",require('./views/player.js').sold);
 
 router.get("/api/initdb", require('./utils/init_db.js').get);
 
+
 module.exports = router;

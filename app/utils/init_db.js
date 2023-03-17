@@ -106,9 +106,10 @@ exports.get = function (req, res) {
             //spreadsheetId: '1BjYukL8TS4xtO4fw4J_R4O6HORRp-cEfJdjVDdT94kY',
             //spreadsheetId: '1TpUQKKkV3krBqikZBlfVANsIX2V__fhwRtM2d8GeASA',
             //spreadsheetId: '16y1Q5k5_WCpmJg2BeWHQavrmv7ALOhEoIGKtawixIQs',
-            spreadsheetId: '18fwdnmpizg6QoZ-E9Kuy1pRZI-6U_2XsPrFWLXwJhXQ',
+            //spreadsheetId: '18fwdnmpizg6QoZ-E9Kuy1pRZI-6U_2XsPrFWLXwJhXQ',
+            spreadsheetId: '1UrRko7CDxSFgCIzVk5GA_R-xMtFtn1SOGkk31ZQh_Fg',
             // (2) Changed the range of data being pulled
-            range: '2022!B2:P1000',
+            range: '2023!B2:X1000',
         }, (err, response) => {
             // (3) Checked for error messages
             if (err) return console.log('The API returned an error: ' + err);
@@ -116,53 +117,36 @@ exports.get = function (req, res) {
             players.clear((err, result) => {
                 let rows = response.data.values;
                 let data = [];
-/*                rows.forEach (row => {
-                    let record = {
-                        "image":row[0],
-                        "name":row[1],
-                        "dept":row[2],
-                        "batting":row[7],
-                        "bowling":row[8],
-                        "keeping":row[9],
-                        "fielding":row[10],
-                        "specialization":row[12],
-                        "tagline":row[13],
-                        "quote":row[14],
-                        "sold":"unsold",
-                        "price":"0",
-                        "unsold":false
-                    };*/
-
                 const drive = google.drive({version: 'v3', auth});
                 rows.forEach (row => {
-                    /*let img_id = row[0].split("=");
-                    let path = fs.createWriteStream("./static/assets/images/players/"+img_id[1]+".png");
-                    console.log(path)
-                    drive.files.get({ fileId: img_id[1], alt: 'media'}, {responseType: 'stream'},
-                        function(err, res){
-                            res.data
-                                .on('end', () => {
-                                    console.log('Done');
-                                })
-                                .on('error', err => {
-                                    console.log('Error', err);
-                                })
-                            .pipe(path);
-                        });*/
+                    // let img_id = row[2].split("=");
+                    // let path = fs.createWriteStream("./static/assets/images/players/"+img_id[1]+".jpeg");
+                    // console.log(path)
+                    // drive.files.get({ fileId: img_id[1], alt: 'media'}, {responseType: 'stream'},
+                    //     function(err, res){
+                    //         res.data
+                    //             .on('end', () => {
+                    //                 console.log('Done');
+                    //             })
+                    //             .on('error', err => {
+                    //                 console.log('Error', err);
+                    //             })
+                    //         .pipe(path);
+                    //     });
                     let record = {
-                        "image":row[0],
-                        "name":row[0],
+                        "image":row[2],
+                        "name":row[1],
                         //"dept":row[2],
-                        "batting":row[2],
-                        "batsman":row[3],
-                        "bowling":row[5],
-                        "bowler":row[4],
+                        "batting":row[4],
+                        "batsman":row[5],
+                        "bowling":row[6],
+                        "bowler":row[7],
                         //"keeping":row[9],
                         //"fielding":row[14],
-                        "specialization":row[1],
-                        "available":row[6],
+                        "specialization":row[3],
+                        "available":row[9],
                         //"quote":row[12],
-                        "premimum":row[8],
+                        "premimum":row[10],
                         "sold":"unsold",
                         "price":"0",
                         "unsold":false
