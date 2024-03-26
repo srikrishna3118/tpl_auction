@@ -10,40 +10,37 @@ block content
                 .content-heading
                     table()
                         tr
-                            td
-                                table(style='width:100%')
-                                    tr
-                                        td
-                                            h3 Batting:
-                                                //label(for='batting') Batting:
-                                        td
-                                            h3 !{bat}
-                                                //progress#batting(value=bat max='100')
-
-                                    tr
-                                        td
-                                            h3 Batting Order:
-                                                //label(for='bowling') Bating Order:
-                                        td
-                                            h3 !{bats}
-                                                //progress#bowling(value=bowl max='100')
-                                    tr
-                                        td
-                                            h3 Bowling Style:
-                                                //label(for='fielding') Bowling:
-                                        td
-                                            h3 !{bowl}
-                                                //progress#fielding(value=field max='100')
-                                    tr
-                                        td
-                                            h3 Bowling Dominant Hand:
-                                                //label(for='wk') Wicketkeeping:
-                                        td
-                                            h3 !{bowls}
-                                                //progress#wk(value=wk max='100')
-                                //h3     Bowling - !{bowl}
-                                //h3    Wicket keeping - !{wk}
-                                //h3     Fielding - !{field}\
+                            //td
+                            //    table(style='width:100%')
+                            //        tr
+                            //            td
+                            //                h2 Batting:
+                            //                    //label(for='batting') Batting:
+                            //            td
+                            //                h2 !{bat}
+                            //                    //progress#batting(value=bat max='100')
+                            //
+                            //        tr
+                            //            td
+                            //                h2 Batting Order:
+                            //                    //label(for='bowling') Bating Order:
+                            //            td
+                            //                h2 !{bats}
+                            //                    //progress#bowling(value=bowl max='100')
+                            //        tr
+                            //            td
+                            //                h2 Bowling Style:
+                            //                    //label(for='fielding') Bowling:
+                            //            td
+                            //                h2 !{bowl}
+                            //                    //progress#fielding(value=field max='100')
+                            //        tr
+                            //            td
+                            //                h2 Bowling Dominant Hand:
+                            //                    //label(for='wk') Wicketkeeping:
+                            //            td
+                            //                h2 !{bowls}
+                            //                    //progress#wk(value=wk max='100')
                             td
                                 p#time_left.maa
                                     span.glyphicon.glyphicon-bell
@@ -69,22 +66,22 @@ block content
                                 h1
                                     label.custom-control-label() Team Name:
                                     br
-                                    input#Uyyalawada.custom-control-input(type='radio' value='Uyyalawada' name='team' required)
-                                    label.custom-control-label(for='Uyyalawada') &nbsp; Satish &nbsp;
+                                    input#one.custom-control-input(type='radio' value='one' name='team' required)
+                                    label.custom-control-label(for='one') &nbsp; Yaswanth &nbsp;
                                     //img(src='/assets/images/Teamlogos/kakatiya_s.png' alt='')
 
                                     br
-                                    input#Rudrama.custom-control-input(type='radio' value='Rudrama' name='team')
-                                    label.custom-control-label(for='Rudrama') &nbsp; Sai Charan &nbsp;
+                                    input#two.custom-control-input(type='radio' value='two' name='team')
+                                    label.custom-control-label(for='two') &nbsp; Nandan &nbsp;
                                         //img(src='/assets/images/Teamlogos/vijayanagara_s.jpeg' alt='')
                                     br
-                                    input#Alluri.custom-control-input(type='radio' value='Alluri' name='team')
-                                    label.custom-control-label(for='Alluri') &nbsp; Chandu &nbsp;
+                                    input#three.custom-control-input(type='radio' value='three' name='team')
+                                    label.custom-control-label(for='three') &nbsp; Anil &nbsp;
                                         //img(src='/assets/images/Teamlogos/chalukya_s.jpeg' alt='')
-                                    br
-                                    input#Komaram.custom-control-input(type='radio' value='Komaram' name='team')
-                                    label.custom-control-label(for='Komaram') &nbsp; Chanakya &nbsp;
-                                        //img(src='/assets/images/Teamlogos/satavahana_s.jpeg' alt='')
+                                    //br
+                                    //input#four.custom-control-input(type='radio' value='four' name='team')
+                                    //label.custom-control-label(for='four') &nbsp; Chanakya &nbsp;
+                                    //    //img(src='/assets/images/Teamlogos/satavahana_s.jpeg' alt='')
                                     br
                                     input#unsold.custom-control-input(type='radio' value='unsold' name='team')
                                     label.custom-control-label(for='unsold') &nbsp; unsold
@@ -95,7 +92,7 @@ block content
                                                     label.form(for='price') Bid price:
                                             td
                                                 h2
-                                                    input#price.form-control(type='number' name='price' size='50' placeholder='2.0' step='0.5' min='0' max='130' required)
+                                                    input#price.form-control(type='number' name='price' size='50' placeholder='4.0' step='0.5' min='0' max='130' required)
 
                                             td
                                                 h2

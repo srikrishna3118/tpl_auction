@@ -5,7 +5,7 @@ const client = new MongoClient(config.mongo.uri, { useNewUrlParser: true });
 
 var players= null;// = require('../models/player');
 
-const team_name = ["Uyyalawada", "Rudrama", "Alluri", "Komaram"];
+const team_name = ["one", "two", "three", "four"];
 const Bat = "Batsman"
 const Bowl = "Bowler"
 const Wk = "Wicketkeeper"
@@ -142,11 +142,11 @@ exports.auction = function(req,res){
                     //bowl: getStats(result.bowling),
                     //field: getStats(result.keeping),
                     //wk: getStats(result.keeping),
-                    bat: result.batting,
-                    bats: result.batsman,
-                    bowl: result.batting,
-                    bowls: result.bowler,
-                    tag: result.available,
+                    // bat: result.batting,
+                    // bats: result.batsman,
+                    // bowl: result.batting,
+                    // bowls: result.bowler,
+                    //tag: result.,
                     //quote: result.quote,
                     img: out_img
                 })
@@ -201,10 +201,10 @@ function makeplayer(row){
         //player = player.concat("(a)","-",row.price,"cr");
         player.spl = "/assets/images/icon_all2.png";
     }
-    if(row.specialization === Wk){
-        //player = player.concat("(w)","-",row.price,"cr");
-        player.spl = "/assets/images/icon_wk.png";
-    }
+    // if(row.specialization === Wk){
+    //     //player = player.concat("(w)","-",row.price,"cr");
+    //     player.spl = "/assets/images/icon_wk.png";
+    // }
     return player;
 }
 
@@ -247,28 +247,27 @@ exports.team = function(req,res){
                  }
 
             });
-            let baseprice = 2
-            let maxplayers = 15
+            let baseprice = 4
+            let maxplayers = 17
             //console.log(team1.length)
             let mp1 = tp1 - ((maxplayers-team1.length-1)*2)
             let mp2 = tp2 - ((maxplayers-team2.length-1)*2)
             let mp3 = tp3 - ((maxplayers-team3.length-1)*2)
-            let mp4 = tp4 - ((maxplayers-team4.length-1)*2)
-            console.log(team1.length)
-            console.log(mp1,mp2,mp3,mp4)
+            //let mp4 = tp4 - ((maxplayers-team4.length-1)*2)
+
             res.render('teams', {
                 t1: team1,
                 t2: team2,
                 t3: team3,
-                t4: team4,
+                //t4: team4,
                 p1: tp1,
                 p2:tp2,
                 p3:tp3,
-                p4:tp4,
+                //p4:tp4,
                 m1: mp1,
                 m2: mp2,
                 m3: mp3,
-                m4: mp4
+                //m4: mp4
             });
         }
         //console.log(result);

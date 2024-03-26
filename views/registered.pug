@@ -7,33 +7,33 @@ block content
         - var all = allrounder.length
         - var w = wk.length
         - var tot = w+all+bat+bowl
-        h1 Total number of people registered (excluding Captains, Vice, and Abhishek) this TPL !{tot}
+        h1 Total number of people registered (excluding Captains, Vice) this TPL !{tot}
         .row
-            .column(style='background-color:#add;')
+            .column3(style='background-color:#add;')
                 h2 Batsman &nbsp
                     img(src="/assets/images/icon_bat.png")
                     | &nbsp !{bat}
                 hr
                 each player in batsman
                     h2 !{player}
-            .column(style='background-color:#ddd;')
+            .column3(style='background-color:#ddd;')
                 h2 Bowler &nbsp
                     img(src="/assets/images/icon_ball1.png")
                     | &nbsp !{bowl}
                 hr
                 each player1 in bowler
                     h2 !{player1}
-            .column(style='background-color:#add;')
+            .column3(style='background-color:#add;')
                 h2 Allrounder &nbsp
                     img(src="/assets/images/icon_all2.png")
                     | &nbsp !{all}
                 hr
                 each player2 in allrounder
                     h2 !{player2}
-            .column(style='background-color:#ddd;')
-                h2 Wicketkeeper &nbsp
-                    img(src="/assets/images/icon_wk.png")
-                    | &nbsp !{w}
-                hr
-                each player3 in wk
-                    h2 !{player3}
+            //.column(style='background-color:#ddd;')
+            //    h2 Wicketkeeper &nbsp
+            //        img(src="/assets/images/icon_wk.png")
+            //        | &nbsp !{w}
+            //    hr
+            //    each player3 in wk
+            //        h2 !{player3}

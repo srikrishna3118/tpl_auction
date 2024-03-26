@@ -89,7 +89,7 @@ function DownloadFiles(auth) {
         //console.log(result);
         result.forEach(row=>{
             var img = row.image.split("=");
-            var path = fs.createWriteStream("./static/assets/images/players/"+img[1]+".jpg");
+            var path = fs.createWriteStream("./static/assets/images/players/"+img[1]+".jpeg");
             drive.files.get({
                 fileId: img[1],
                 alt: 'media',
